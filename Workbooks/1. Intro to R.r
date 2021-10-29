@@ -39,7 +39,7 @@
 #error or (b) not give the output you intended.
 
 #Using Google, find how the following characters are used in R and write what
-# they do. I have completed the first one for you
+# they do. I have completed the first one for you. (est. time: 20 minutes)
 
 #   #     comment character. Everything written on a line after # will not be executed. This is used for making notes in your code books.
 #   =     
@@ -51,11 +51,11 @@
 #   {}    
 #   []    
 #   [[]]  
-#   ;     
-#   :
+#   ;   
+#   :  
 #   %%
-#   ~
-#   \     
+#   ~   
+#   \    
 #   \\    
 
 #There are many more symbols with special meanings in R. You can find many of
@@ -75,8 +75,11 @@
 #googling the function name. Then, to the right of the code, write a comment 
 #explaining what that line of code is doing. I have done the first one for you.
 
-setwd("C:\\Google Drive\\Projects\\PHY_Blab_2\\wing evolution paper\\morphological analysis") #This sets the "working directory" to whatever directory is specified in the quotes. You should change this to whatever folder you have put your data in. 
-library(ape); library(phytools)
+setwd("C:\\Google Drive\\Teaching\\Computational biology\\ComputationalBiology-Evangelista GH\\Workbooks\\accessory files") #This sets the "working directory" to whatever directory is specified in the quotes. You should change this to whatever folder you have put your data in. 
+list.files()
+dir()
+
+library(ape); library(phytools) 
 
 #Now let's define two objects. What do read.delim() and read.tree() do?
 contData<-read.delim("continuous.Morpho4june2021.txt",row.names=1, sep="\t", colClasses = c("character",rep("numeric",12)), na.strings = "?")
@@ -86,9 +89,9 @@ BlattTree<-read.tree("bestTree.renamed.tre")
 contData
 BlattTree
 
-#or we can do it like this. (Please continue making commented notes about what 
-#each function does)
+#or we can do it like this. (Please continue making commented notes about what each function does)
 head(contData)
+
 
 #contData is a very straightforward data type. It's a table of some kind.
 #BlattTree is a bit more interesting. It gives a description of the data instead
@@ -99,8 +102,10 @@ head(contData)
 typeof(contData)
 str(contData)
 dim(contData)
+class(contData)
 
 typeof(BlattTree)
+class(BlattTree)
 str(BlattTree)
 dim(BlattTree)
 
@@ -111,7 +116,7 @@ dim(BlattTree)
 #Why do we use dataframes? They seem overly complicated, but having data 
 #packaged into a dataframe is useful. For instance, run...
 
-str(contData)
+str(contData) 
 
 #it gives us a lot of useful information about the data, including the variable
 #names. We can then use those variable names to retrieve certain parts of our
@@ -119,6 +124,7 @@ str(contData)
 
 #What do the following lines of code do?
 contData$Wing.length
+contData["Wing.length"]
 contData[c("Body.Length","Wing.length")]
 
 #What does c() do? Try using the same functions to call other variables.
@@ -161,6 +167,7 @@ contData[[1]][[2]]
 
 #If we want to take a look at our data, R offers some great visual options. 
 #(Please continue making commented notes about what each new function does)
+
 plot(contData[,c("Body.Length","Wing.length")], xlab="Body Length", ylab="Wing length",pch=21,bg="grey", cex=1.4)
 
 #There looks like a correlation between the variables but we can't be sure
@@ -199,25 +206,30 @@ fit.ols[2]
 #between body length and some other variables too.
 
 dependantVariables<-c("Total.wing.area","No..anal.veins", "Apical.field.area")
-allLinearModels<<-c() 
+
+allLinearModels<<-c()
+
+length(allLinearModels)
+
 for (i in 1:length(dependantVariables)) {
-  allLinearModels[[length(allLinearModels)+1]]<-lm(Body.Length ~ . ,data=contData[,c("Body.Length",dependantVariables[i])]) #Note: the "." here tells the lm() function to include all other variables in the data as dependant variables. Since we are specifying that there is only one other variable in the data it does the job correctly.
-  
+  allLinearModels[[length(allLinearModels)+1]] <- lm(Body.Length ~ . ,data=contData[,c("Body.Length",dependantVariables[i] )]) 
+  #Note: the "." here tells the lm() function to include all other variables in the data as dependant variables. Since we are specifying that there is only one other variable in the data it does the job correctly.
 }
+
 
 #Now take a look at the new object we made "allLinearModels". First, we created 
 #a list object with no values in it. Then we added values to it iteratively.
 
 allLinearModels
 
-#What are the dimensions of this object, what class is it and what is it's structure?
+#What are the dimensions of this object, what class is it and what is its structure?
 
 #When you need to do an iterative process for() is a very simple and useful
 #function. However, there are other methods of iteration. A useful one is called
 #mapping. Here you take a function and "map" it onto something (e.g., a subset
 #of data, a row in a list, an object in a list of objects). Usually, the map
 #function finishes when there is nothing left to map it on. That is one reason
-#why it can be more efficient than using for(), which you have to specify the 
+#it can be more efficient than using for(), which you have to specify the 
 #stopping point.
 
 #In R there are a series of mapping functions but a common one is lapply(). 
@@ -248,6 +260,7 @@ contData[c("Body.Length","Wing.length")]
 #comparison of body length and wing length.
 
 corrData1<-as.data.frame(lapply( contData[c("Body.Length","Wing.length")], function(x) ifelse(x>45, NA, x)))
+
 plot(corrData1, xlab="Body Length", ylab="Wing length",pch=21,bg="grey", cex=1.4)
 
 

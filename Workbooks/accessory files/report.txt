@@ -1,5 +1,5 @@
-HistoryId: MCID_610816d070fa280ebe4af19d
-QueryKey: 4
+HistoryId: MCID_617b193301c10a17bd91e289
+QueryKey: 6
 ReleaseType: RefSeq
 FileType: PROT_FASTA
 Flat: true
@@ -11,4 +11,4 @@ Entries to download: 1
 
 PROT_FASTA files in archive: 1
 Total size (bytes): 9597429
-Total time: 2.24 seconds
+Total time: 757 milliseconds

@@ -123,7 +123,7 @@ The residuals are small, particularly in the first years of the model. Compare t
 ```{r}
 ```
 
-In the above plot the circles represent the residuals for the data under the estimated model and the stars are the residuals for the data under a randomized model. This will change every time we run the code because it does a random permutation every time, so sometimes it might be better than others. However, most of the time we will see that the values on the right are generally further from 0 (perfect fit) than the values on the left.
+In the above plot, the circles represent the residuals for the data under the estimated model and the stars are the residuals for the data under a randomized model. This will change every time we run the code because it does a random permutation every time, so sometimes it might be better than others. However, most of the time we will see that the values on the right are generally further from 0 (perfect fit) than the values on the left.
 
 ### 2. Extrapolative value (how good the data are at making predictions about data outside the range of the original)
 
