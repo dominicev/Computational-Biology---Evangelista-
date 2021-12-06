@@ -1,14 +1,14 @@
 ###############################################################################
 ############ COMPUTATIONAL BIOLOGY - ADELPHI UNIVERSITY #######################
-############ PROFESSOR DOMINIC EVANGELISTA              #######################
+############ PROFESSOR DOMINIC EVANGELISTA#####################################
 ###############################################################################
-############ last updated Fall 2021                   #########################
+############ last updated Fall 2021############################################
 ###############################################################################
 
 ######################### Unit 0: Intro to this document#######################
 
 #What is this document?
-#This is an r-script document (a dot-r file). It is th most basic type of
+#This is an r-script document (a dot-r file). It is the most basic type of
 #document that we can write R code in. If you are viewing this file in RStudio 
 #(which you should be) you should be able to edit, and run code directly from
 #this document with no need to compile anything (if you don't know what that is
@@ -22,16 +22,16 @@
 
 #What is programming? What is an object? 
 
-# -programming, or "code" is text-based instructions that a computer can read
-# -an object is a string of characters that is defined to contain some kind of
-#  information (for example: a list of data, a function, or another object)
+#programming, or "code" is text-based instructions that a computer can read
+#an object is a string of characters that is defined to contain some kind of
+#information (for example: a list of data, a function, or another object)
 
 #By combining objects and methods (instructions, operations) in the proper way
 #we can write programs to do lots of useful things. Of course we could do these
 #things manually but we are limited by our mechanical speed and memory limits.
 
 
-#1.1 R Syntax#
+#1.1 R Syntax
 
 #R (like Java, C++, Python etc.) is a coding language. Just like regular
 #language it has rules (syntax) that must be followed in order for it to make
@@ -56,7 +56,12 @@
 #   %%
 #   ~   
 #   \    
-#   \\    
+#   \\ 
+#   !
+#   <
+#   > 
+#   <=
+#   >=
 
 #There are many more symbols with special meanings in R. You can find many of
 #them here: https://www.tutorialspoint.com/r/r_operators.htm
@@ -163,7 +168,7 @@ contData[[1]][[1]]
 contData[[1]][[2]]
 
 
-#1.4 Basic scatter plot and linear model#
+#1.4 Basic scatter plot and linear model
 
 #If we want to take a look at our data, R offers some great visual options. 
 #(Please continue making commented notes about what each new function does)
@@ -181,7 +186,7 @@ summary(fit.ols)
 {plot(contData[,c("Body.Length","Wing.length")], xlab="Body Length", ylab="Wing length",pch=21,bg="grey", cex=1.4)
 abline(fit.ols,lwd=2,lty="dashed",col="red")}
 
-  #Why are there "curly brackets" around the above code? What happens if you remove them?
+#Why are there "curly brackets" around the above code? What happens if you remove them?
 
 #so what is fit.ols?
 typeof(fit.ols)
